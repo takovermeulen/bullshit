@@ -22,10 +22,6 @@ export default {
       {
         name: 'og:site_name',
         content: 'Bullshit Generator'
-      },
-      {
-        name: 'og:image',
-        content: 'http://bullshit2.takovermeulen.eu/icon.png'
       }
     ],
     link: [
@@ -92,6 +88,9 @@ export default {
   pwa: {
     icon: {
       source: '/static/icon.png'
+    },
+    meta: {
+      appleStatusBarStyle: 'black-translucent'
     }
   },
 
