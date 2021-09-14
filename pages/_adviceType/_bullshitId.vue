@@ -215,7 +215,9 @@ export default {
     return {
       meta: [
         { hid: 'description', name: 'description', content: this.metaDescription },
+        { hid: 'og:description', name: 'og:description', content: this.metaDescription },
         { hid: 'title', name: 'title', content: this.title },
+        { hid: 'og:title', name: 'og:title', content: this.title },
         { hid: 'og:url', name: 'og:url', content: this.sharingUrl }
       ]
     }

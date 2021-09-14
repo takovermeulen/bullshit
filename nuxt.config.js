@@ -26,6 +26,10 @@ export default {
       {
         name: 'image',
         content: 'https://bullshit.takovermeulen.eu/icon.png'
+      },
+      {
+        name: 'og:image',
+        content: 'https://bullshit.takovermeulen.eu/icon.png'
       }
     ],
     link: [
