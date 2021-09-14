@@ -22,6 +22,10 @@ export default {
       {
         name: 'og:site_name',
         content: 'Bullshit Generator'
+      },
+      {
+        name: 'image',
+        content: 'https://bullshit.takovermeulen.eu/icon.png'
       }
     ],
     link: [

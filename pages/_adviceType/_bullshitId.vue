@@ -148,7 +148,6 @@
                           >
                             Deel op LinkedIn
                           </base-button></a>
-
                       </div>
                     </div>
                   </div>
@@ -186,9 +185,8 @@ export default {
       adviceTypeSelected: 'consultant',
       sentenceSequence: [],
       inEditMode: false,
-      title: 'Jouw advies',
       metaDescription: '',
-      sharingUrl: 'https://www.linkedin.com/sharing/share-offsite/?url=' + 'https://bullshit2.takovermeulen.eu/'
+      sharingUrl: 'https://www.linkedin.com/shareArticle?mini=true&url=' + 'https://bullshit.takovermeulen.eu/'
     }
   },
   async fetch () {
@@ -210,13 +208,14 @@ export default {
       this.sentenceSequence = await sequencePromise
       this.adviceTypeSelected = 'consultant'
     }
+    this.title = BullshitGenerator.getTitle(this.sentenceSequence, this.adviceTypeSelected)
     this.metaDescription = BullshitGenerator.getMessage(this.sentenceSequence, this.adviceTypeSelected)
   },
   head () {
     return {
       meta: [
         { hid: 'description', name: 'description', content: this.metaDescription },
-        { hid: 'og:description', name: 'og:description', content: this.metaDescription },
+        { hid: 'title', name: 'title', content: this.title },
         { hid: 'og:url', name: 'og:url', content: this.sharingUrl }
       ]
     }
@@ -225,7 +224,10 @@ export default {
     message () {
       return BullshitGenerator.getMessage(this.sentenceSequence, this.adviceTypeSelected)
     },
-    webShareApiSupported() {
+    title () {
+      return BullshitGenerator.getTitle(this.sentenceSequence, this.adviceTypeSelected)
+    },
+    webShareApiSupported () {
       if (typeof navigator !== 'undefined') {
         return navigator.share || false
       } else {
@@ -267,14 +269,14 @@ export default {
       this.$scrollTo('#advice')
     },
     updateSharingUrl () {
-      this.sharingUrl = 'https://www.linkedin.com/sharing/share-offsite/?url=' +
-        'https://bullshit2.takovermeulen.eu/' +
+      this.sharingUrl = 'https://www.linkedin.com/shareArticle?mini=true&url=' +
+        'https://bullshit.takovermeulen.eu/' +
         this.adviceTypeSelected + '/' +
         BullshitGenerator.getBase64FromSequence(this.sentenceSequence)
     },
     shareViaWebShare () {
       navigator.share({
-        title: 'Bullshit Generator',
+        title: this.title,
         text: this.message,
         url: this.sharingUrl
       })

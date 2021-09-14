@@ -63,9 +63,18 @@ function getMessage (sequences, adviceType) {
   }
 }
 
+function getTitle (sequences, adviceType) {
+  if (sequences == null || sequences.length === 0 || sequences[0].length === 0) {
+    return 'Jouw advies'
+  } else {
+    return matrix[adviceType][0][sequences[0][0]]
+  }
+}
+
 export default {
   generateSequence,
   getMessage,
+  getTitle,
   getSequenceFromBase64,
   getBase64FromSequence,
   matrix
