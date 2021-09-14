@@ -186,6 +186,7 @@ export default {
       sentenceSequence: [],
       inEditMode: false,
       metaDescription: '',
+      metaTitle: '',
       sharingUrl: 'https://www.linkedin.com/shareArticle?mini=true&url=' + 'https://bullshit.takovermeulen.eu/'
     }
   },
@@ -208,7 +209,7 @@ export default {
       this.sentenceSequence = await sequencePromise
       this.adviceTypeSelected = 'consultant'
     }
-    this.title = BullshitGenerator.getTitle(this.sentenceSequence, this.adviceTypeSelected)
+    this.metaTitle = BullshitGenerator.getTitle(this.sentenceSequence, this.adviceTypeSelected)
     this.metaDescription = BullshitGenerator.getMessage(this.sentenceSequence, this.adviceTypeSelected)
   },
   head () {

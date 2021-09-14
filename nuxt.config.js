@@ -90,9 +90,16 @@ export default {
         'Popover'
       ]
     }],
-    '@nuxtjs/pwa'
+    '@nuxtjs/pwa',
+    '@nuxtjs/google-gtag'
   ],
-
+  'google-gtag': {
+    id: 'UA-32265621-1',
+    config: {
+      anonymize_ip: true, // anonymize IP
+      send_page_view: false, // might be necessary to avoid duplicated page track on page reload
+    }
+  },
   pwa: {
     icon: {
       source: '/static/icon.png'
