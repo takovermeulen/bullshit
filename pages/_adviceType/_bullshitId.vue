@@ -187,7 +187,8 @@ export default {
       inEditMode: false,
       metaDescription: '',
       metaTitle: '',
-      sharingUrl: 'https://www.linkedin.com/shareArticle?mini=true&url=' + 'https://bullshit.takovermeulen.eu/'
+      sharingUrl: 'https://www.linkedin.com/shareArticle?mini=true&url=' + 'https://bullshit.takovermeulen.eu/',
+      webShareUrl: 'https://bullshit.takovermeulen.eu/'
     }
   },
   async fetch () {
@@ -276,12 +277,15 @@ export default {
         'https://bullshit.takovermeulen.eu/' +
         this.adviceTypeSelected + '/' +
         BullshitGenerator.getBase64FromSequence(this.sentenceSequence)
+      this.webShareUrl = 'https://bullshit.takovermeulen.eu/' +
+        this.adviceTypeSelected + '/' +
+        BullshitGenerator.getBase64FromSequence(this.sentenceSequence)
     },
     shareViaWebShare () {
       navigator.share({
         title: this.title,
         text: this.message,
-        url: this.sharingUrl
+        url: this.webShareUrl
       })
     }
   }
